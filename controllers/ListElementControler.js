@@ -38,9 +38,10 @@ const deleteListElement = (req, res) => {
 const editListElement = (req, res) => {
   const { _id } = req.params;
   const { checked } = req.body;
+  const newValue = checked === undefined ? false : true;
   console.log("_id", _id);
   console.log("checked", checked);
-  ListElement.findOneAndUpdate({ _id }, { checked: true }, null)
+  ListElement.findOneAndUpdate({ _id }, { checked: newValue }, null)
     .then(() => {
       console.log("succesfully update");
 
